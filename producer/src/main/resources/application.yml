@@ -1,0 +1,21 @@
+server:
+  port: 5002
+
+spring:
+  main:
+    banner-mode: off
+
+# RabbitMQ
+rabbitmq:
+  sslEnabled: ${RABBITMQ_SSL_ENABLED:false}
+  username: ${RABBITMQ_USERNAME:guest}
+  password: ${RABBITMQ_PASSWORD:guest}
+  host: ${RABBITMQ_HOST:localhost}
+  virtualHost: ${RABBITMQ_VIRTUALHOST:test}
+  port: ${RABBITMQ_PORT:5672}
+
+# Card Changed Notification
+card-changed-notification:
+  notificationExchange: example.card-notification
+  statusChanged:
+    key: card-status-changed

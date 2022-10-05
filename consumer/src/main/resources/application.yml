@@ -1,0 +1,27 @@
+server:
+  port: 5001
+
+spring:
+  main:
+    banner-mode: off
+
+# RabbitMQ
+rabbitmq:
+  sslEnabled: ${RABBITMQ_SSL_ENABLED:false}
+  username: ${RABBITMQ_USERNAME:guest}
+  password: ${RABBITMQ_PASSWORD:guest}
+  host: ${RABBITMQ_HOST:localhost}
+  virtualHost: ${RABBITMQ_VIRTUALHOST:test}
+  port: ${RABBITMQ_PORT:5672}
+
+# Card Changed Notification
+card-changed-notification:
+  technicalDeadLetterExchange: example.technical.exchange
+  messageTimeToLive: 25000
+  maxDeadThreshold: 10
+  notificationExchange: example.card-notification
+  statusChanged:
+    queue: example.card-notification.card-status-changed.queue
+    deadLetterQueue: example.card-notification.card-status-changed.dlq
+    parkingLotQueue: example.card-notification.card-status-changed.plq
+    key: card-status-changed
